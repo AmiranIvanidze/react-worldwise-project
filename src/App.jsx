@@ -3,9 +3,13 @@ import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
 import HomePage from "./pages/HomePage";
 import PageNotFound from "./pages/PageNotFound";
+import PageNav from "./components/PageNav";
 const App = () => {
   return (
     <BrowserRouter>
+    
+    <PageNav/>
+
         <Routes>
             <Route path="/" element={ <HomePage/> }/>
             <Route path="product" element={ <Product/> }/>
@@ -13,6 +17,7 @@ const App = () => {
             <Route path="*" element={ <PageNotFound/> }/>
         </Routes>
     </BrowserRouter>
+    
   )
 }
 
