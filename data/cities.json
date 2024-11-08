@@ -35,6 +35,126 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Tokyo",
+      "country": "Japan",
+      "emoji": "🇯🇵",
+      "date": "2028-05-10T04:45:29.251Z",
+      "notes": "Incredible culture and food!",
+      "position": {
+        "lat": 35.689487,
+        "lng": 139.691711
+      },
+      "id": 19485107
+    },
+    {
+      "cityName": "New York",
+      "country": "USA",
+      "emoji": "🇺🇸",
+      "date": "2026-12-25T16:30:00.000Z",
+      "notes": "Bright lights and busy streets.",
+      "position": {
+        "lat": 40.712776,
+        "lng": -74.005974
+      },
+      "id": 20136489
+    },
+    {
+      "cityName": "Cape Town",
+      "country": "South Africa",
+      "emoji": "🇿🇦",
+      "date": "2025-11-02T13:15:22.456Z",
+      "notes": "Stunning scenery and beaches.",
+      "position": {
+        "lat": -33.924869,
+        "lng": 18.424055
+      },
+      "id": 37981234
+    },
+    {
+      "cityName": "Sydney",
+      "country": "Australia",
+      "emoji": "🇦🇺",
+      "date": "2028-08-15T21:00:00.000Z",
+      "notes": "Loved the Opera House!",
+      "position": {
+        "lat": -33.868820,
+        "lng": 151.209290
+      },
+      "id": 28347165
+    },
+    {
+      "cityName": "Rio de Janeiro",
+      "country": "Brazil",
+      "emoji": "🇧🇷",
+      "date": "2026-02-11T12:00:00.000Z",
+      "notes": "Carnival was unforgettable.",
+      "position": {
+        "lat": -22.906847,
+        "lng": -43.172896
+      },
+      "id": 93561239
+    },
+    {
+      "cityName": "Paris",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2027-04-14T17:45:00.000Z",
+      "notes": "City of lights and romance.",
+      "position": {
+        "lat": 48.856613,
+        "lng": 2.352222
+      },
+      "id": 47562109
+    },
+    {
+      "cityName": "Dubai",
+      "country": "UAE",
+      "emoji": "🇦🇪",
+      "date": "2028-12-25T09:30:00.000Z",
+      "notes": "Amazing skyscrapers and desert.",
+      "position": {
+        "lat": 25.276987,
+        "lng": 55.296249
+      },
+      "id": 65987132
+    },
+    {
+      "cityName": "Moscow",
+      "country": "Russia",
+      "emoji": "🇷🇺",
+      "date": "2026-10-07T11:00:00.000Z",
+      "notes": "Historic architecture.",
+      "position": {
+        "lat": 55.755825,
+        "lng": 37.617298
+      },
+      "id": 59438147
+    },
+    {
+      "cityName": "Seoul",
+      "country": "South Korea",
+      "emoji": "🇰🇷",
+      "date": "2028-09-01T07:00:00.000Z",
+      "notes": "High-tech and tradition combined.",
+      "position": {
+        "lat": 37.566536,
+        "lng": 126.977966
+      },
+      "id": 20394567
+    },
+    {
+      "cityName": "Rome",
+      "country": "Italy",
+      "emoji": "🇮🇹",
+      "date": "2026-06-18T14:00:00.000Z",
+      "notes": "Rich history everywhere.",
+      "position": {
+        "lat": 41.902782,
+        "lng": 12.496366
+      },
+      "id": 78453012
     }
   ]
 }
