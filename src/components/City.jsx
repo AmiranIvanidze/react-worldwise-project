@@ -17,7 +17,6 @@ const formatDate = (date) =>
 function City() {
   const {id} = useParams();
   const { getCity, currentCity, isLoading } = useCities();
-  if(isLoading){ return <Spinner /> }
 
   const [searchParams, setSearchParams] = useSearchParams();
   const lng = searchParams.get('lng');
@@ -30,6 +29,7 @@ function City() {
     getCity(id)
   },[id])
   
+  if(isLoading){ return <Spinner /> }
 
   return (
    <div className={styles.city}>
