@@ -11,6 +11,7 @@ const Map = () => {
   const [ mapPosition, setMapPosition] = useState([40, 0]);
 
   const [mapLat, mapLng] = useUrlPositions();
+
   const {
     isLoading: isLoadingPosition,
     position: geolocationPosition,
@@ -43,7 +44,6 @@ const Map = () => {
             <Popup>
               <span>{city.emoji}</span>
               <span>{city.cityName}</span>
-              <span>lat={city.position.lat}&lng={city.position.lng}</span>
             </Popup>
           </Marker>
         ))
