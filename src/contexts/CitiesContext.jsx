@@ -10,23 +10,77 @@ import {
 const BASE_URL = "http://localhost:9000";
 
 const CitiesContext = createContext();
+const initialState = {
+  cities: [],
+  isLoading : false,
+  currentCity: {},
+  error: ""
+}
+const reducer = (state, action) => {
+  switch(action.type){
+    case 'loading':
+      return {
+        ...state,
+        isLoading : true
+      }
+    case 'cities/loaded':
+      return {
+        ...state,
+        isLoading:false,
+        cities: action.payload
 
+      }
+    case'city/loaded':
+      return {
+        ...state,
+        isLoading:false,
+        currentCity: action.payload
+        }
+
+    case 'city/created':
+      return {
+        ...state,
+        isLoading: false,
+        cities: [...state.cities, action.payload],
+        currentCity: action.payload
+      }
+    case 'city/deleted':
+      return {
+        ...state,
+        isLoading: false,
+        cities: state.cities.filter(city => city.id !== action.payload),
+        currentCity : {}
+      }
+    case 'rejected':
+        return {
+          ...state,
+          isLoading:false,
+          error: action.payload
+        }
+    default:
+      throw new Error("unknown actio type")
+
+
+  }
+}
 
 function CitiesProvider({ children }) {
-  const [cities, setCities] = useState([]);
-  const [isLoading, seIsLoading] = useState(false);
-  const [currentCity, setCurrentCity] = useState([]);
-  
-  
+
+  const [{cities, isLoading, currentCity, error}, dispatch] = useReducer(reducer, initialState)
+
+ 
 
   async function fetchCities() {
+    dispatch({type: 'loading'});
     try {
+      
       const res = await fetch(`${BASE_URL}/cities`);
       const data = await res.json();
-      setCities(data)
-      seIsLoading(false)
+      console.log("here")
+      dispatch({type: 'cities/loaded', payload:data})
+      
     } catch {
-      throw new Error("Error While Fetching");
+      dispatch({type:'rejected', payload:'There was an error loading data...'})
     }
   }
 
@@ -35,15 +89,15 @@ function CitiesProvider({ children }) {
   }, []);
 
   function getCity(id){
+    if(Number(id) === Number(currentCity.id)) return
     async function fetchCities() {
       try {
-        seIsLoading(true);
+        dispatch({type: 'loading'});
         const res = await fetch(`${BASE_URL}/cities/${id}`);
         const data = await res.json();
-        setCurrentCity(data)
-        seIsLoading(false)
+        dispatch({type: 'city/loaded', payload:data});
       } catch {
-        throw new Error("Error While Fetching");
+        dispatch({type:'rejected', payload:'Error while fetching'})
       }
     }
     fetchCities()
@@ -52,7 +106,7 @@ function CitiesProvider({ children }) {
   function createCity(newCity){
     async function fetchCities() {
       try {
-        seIsLoading(true)
+        dispatch({type: 'loading'});
         const res = await fetch(`${BASE_URL}/cities`, {
           method: 'POST',
           body: JSON.stringify(newCity),
@@ -61,11 +115,10 @@ function CitiesProvider({ children }) {
           }
         });
         const data = await res.json();
-        setCities(cities => [...cities, data]);
-        seIsLoading(false)
+       dispatch({type: 'city/created', payload: data,})
 
       } catch {
-        throw new Error("Error While Fetching");
+        dispatch({type:'rejected', payload:"Error While Creating City"})
       }
     }
     fetchCities()
@@ -73,18 +126,15 @@ function CitiesProvider({ children }) {
 
   function deleteCity(id){
     async function fetchCities() {
+      dispatch({type: "loading"})
       try {
-        seIsLoading(true)
         await fetch(`${BASE_URL}/cities/${id}`, {
           method: 'DELETE'
         });
-        setCities(cities => cities.filter(city => city.id !== id));
-        
+      dispatch({type: "city/deleted", payload: id})        
       } catch {
-        throw new Error("Error While Deleting The City");
-      } finally {
-        seIsLoading(false)
-      }
+        dispatch({type:'rejected', payload:"Error While Deleting The City"})
+      } 
     }
     fetchCities()
   }
@@ -97,7 +147,8 @@ function CitiesProvider({ children }) {
         currentCity,
         getCity,
         createCity,
-        deleteCity
+        deleteCity,
+        error
       }}
     >
       {children}
