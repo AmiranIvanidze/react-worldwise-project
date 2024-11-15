@@ -7,7 +7,7 @@ const FAKE_USER = {
   avatar: "https://i.pravatar.cc/100?u=zz",
 };
 
-function User() {
+function User({logout}) {
   const user = FAKE_USER;
 
   function handleClick() {}
@@ -16,7 +16,7 @@ function User() {
     <div className={styles.user}>
       <img src={user.avatar} alt={user.name} />
       <span>Welcome, {user.name}</span>
-      <button onClick={handleClick}>Logout</button>
+      <button onClick={() => logout()}>Logout</button>
     </div>
   );
 }
