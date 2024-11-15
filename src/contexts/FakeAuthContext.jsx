@@ -34,20 +34,21 @@ const FAKE_USER = {
   };
 
 function AuthProvider({children}){
-
     const [{user, isAuthenticated}, dispatch] = useReducer(reducer, initalState);
 
     function login(email, password){
         if(email == FAKE_USER.email && password == FAKE_USER.password){
             dispatch({type:'login', payload: FAKE_USER})
         }
+        
     }
     function logout() {
         dispatch({type:"logout"})
+
     }   
     return (
         <AuthContext.Provider value={
-            {user, isAuthenticated}
+            {user, isAuthenticated, login, logout}
         }>
             {children}
 
@@ -60,6 +61,7 @@ function useAuth(){
     if(context == undefined){
         throw new Error('AuthContext was used outside AuthProvider');
     }
+    return context;
 }
 
 export {AuthProvider, useAuth};
