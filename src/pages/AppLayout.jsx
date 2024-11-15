@@ -7,13 +7,6 @@ import styles from './AppLayout.module.css'
 import { useNavigate } from "react-router-dom"
 const AppLayout = () => {
   const {user, isAuthenticated, login, logout} = useAuth();
-  const navigate = useNavigate();
-
-    useEffect(function(){
-      if(!isAuthenticated){
-        navigate('/')
-      }
-    },[isAuthenticated])
  
   return (
     <div className={styles.app}> 
