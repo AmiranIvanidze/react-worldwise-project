@@ -88,7 +88,7 @@ function CitiesProvider({ children }) {
     fetchCities();
   }, []);
 
-  function getCity(id){
+  const getCity = useCallback( function getCity(id){
     if(Number(id) === Number(currentCity.id)) return
     async function fetchCities() {
       try {
@@ -101,7 +101,7 @@ function CitiesProvider({ children }) {
       }
     }
     fetchCities()
-  }
+  }, [currentCity.id])
 
   function createCity(newCity){
     async function fetchCities() {
