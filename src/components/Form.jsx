@@ -48,7 +48,7 @@ function Form() {
         const res = await fetch(`${BASE_URL}?latitude=${lat}&longitude=${lng}`);
         const data = await res.json();
         setCityName(data.city || data.locality || "");
-        setCountry(data.country)
+        setCountry(data.countryName)
         setEmoji(convertToEmoji(data.countryCode))
 
         if(!data.countryCode) throw new Error('That\'s doesn\'t seem to be a city. Click somewhere else 😂 ')
